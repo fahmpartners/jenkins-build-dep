@@ -6,6 +6,7 @@ RUN apk add --no-cache \
 
 ENV DOCKER_CHANNEL stable
 ENV DOCKER_VERSION 17.09.0-ce
+
 # TODO ENV DOCKER_SHA256
 # https://github.com/docker/docker-ce/blob/5b073ee2cf564edee5adca05eee574142f7627bb/components/packaging/static/hash_files !!
 # (no SHA file artifacts on download.docker.com yet as of 2017-06-07 though)
@@ -62,4 +63,18 @@ RUN \
 	apk -Uuv add groff less python py-pip jq curl && \
 	pip install awscli && \
 	apk --purge -v del py-pip && \
-	rm /var/cache/apk/*
+	rm /var/cache/apk/* 
+
+# date
+RUN apk update && \
+    apk upgrade && \
+    apk add ca-certificates && update-ca-certificates &&\
+    apk add --update tzdata
+
+ENV TZ=America/Toronto
+
+# Clean APK cache
+RUN rm -rf /var/cache/apk/*
+
+
+
