@@ -51,8 +51,8 @@ RUN set -ex; \
 
 
 # add docker config to use ecr
-RUN mkdir -p /home/jenkins/.docker
-COPY config.json /home/jenkins/.docker/
+RUN mkdir -p /root/.docker
+COPY config.json /root/.docker/
 COPY docker-credential-ecr-login /usr/local/bin/
 RUN chmod a+x /usr/local/bin/docker-credential-ecr-login
 
