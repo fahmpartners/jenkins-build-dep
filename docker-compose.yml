@@ -1,7 +1,7 @@
 version: '3'
 services:
   jenkins:
-    image: devopsifyio/jenkins-build-dep:alpine
+    build: . 
     environment:
     - AWS_DEFAULT_REGION=us-east-1
     ports:
@@ -14,3 +14,4 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     privileged: true
     restart: on-failure
+
