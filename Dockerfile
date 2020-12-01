@@ -56,9 +56,6 @@ COPY config.json /home/jenkins/.docker/
 RUN curl -s https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/docker-credential-ecr-login -o /usr/local/bin/docker-credential-ecr-login && chmod a+x /usr/local/bin/docker-credential-ecr-login
 
 # add aws=cli
-RUN \
-	mkdir -p /aws && \
-	apk -Uuv add groff less python py-pip jq curl && \
-	pip install awscli && \
+RUN apk -Uuv add groff less python3 py-pip jq curl aws-cli && \
 	apk --purge -v del py-pip && \
 	rm /var/cache/apk/*
