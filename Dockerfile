@@ -53,7 +53,7 @@ RUN set -ex; \
 # add docker config to use ecr
 RUN mkdir -p /home/jenkins/.docker
 COPY config.json /home/jenkins/.docker/
-RUN curl -s https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/docker-credential-ecr-login -o /usr/local/bin/docker-credential-login && chmod a+x /usr/local/bin/docker-credential-ecr-login
+RUN curl -s https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/docker-credential-ecr-login -o /usr/local/bin/docker-credential-ecr-login && chmod a+x /usr/local/bin/docker-credential-ecr-login
 
 # add aws=cli
 RUN \
