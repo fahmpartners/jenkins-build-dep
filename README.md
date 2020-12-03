@@ -5,3 +5,42 @@ Based on https://hub.docker.com/r/jenkins/jenkins
 
 1. add docker binary (for docked in docker)
 2. add docker-credential-ecr-login
+
+
+# Build
+
+1. The repo will be built automaticlly with github action on `master` branch or tag match `v*` pattern.
+
+2. The generated docker image will be push to docker hub `fahm/jenkins-build-dep`.
+
+3. Make sure the github variable DOCKER_USERNAME and DOCKER_PASSWORD have access to https://hub.docker.com/u/fahm/
+
+# Upgrade Jenkins
+
+1. The `Dockerfile` is referencing to jenkins image `jenkins/jenkins:lts-alpine`
+
+2. Any change in master branch will trigger a new build which get the latest base image from `jenkins/jenkins:lts-alpine`
+
+# Deploy
+
+1. Login to Jenkins server (nonprod or prod) as root user
+
+2. stop the Jenkins instance
+
+```
+# cd /root
+# docker-compose down
+```
+
+3. pull the latest fahm/jenkins-build-dep
+
+```
+# docker pull fahm/jenkins-build-dep
+```
+
+4. start the Jenkins instance
+
+```
+# cd /root
+# docker-compose up -d
+```
