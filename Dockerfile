@@ -1,4 +1,5 @@
-FROM jenkins/jenkins:lts-alpine
+FROM jenkins/jenkins:2.263.1-lts-alpine
+
 
 USER root
 RUN apk add --no-cache \

@@ -17,9 +17,9 @@ Based on https://hub.docker.com/r/jenkins/jenkins
 
 # Upgrade Jenkins
 
-1. The `Dockerfile` is referencing to jenkins image `jenkins/jenkins:lts-alpine`
+1. Modify `Dockerfile` to reference a new base jenkins image e.g. `jenkins/jenkins:2.263.1-lts-alpine`
 
-2. Any change in master branch will trigger a new build which get the latest base image from `jenkins/jenkins:lts-alpine`
+2. Commit and push back to `master` branch
 
 # Deploy
 
